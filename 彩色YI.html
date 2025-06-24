@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#127752;&#10024; 可爱i &#10024;&#127752;</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF85A2;
+            --secondary-color: #FFC2D1;
+            --accent-color: #7CB9E8;
+            --text-color: #5E5E5E;
+            --light-bg: #FFF0F5;
+            --card-bg: #FFFFFF;
+            --success-color: #A0E7A0;
+            --warning-color: #FFD700;
+            --shadow: 0 8px 20px rgba(255, 133, 162, 0.2);
+            --border-radius: 16px;
+        }
+ 
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+ 
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light-bg);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 194, 209, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 30%, rgba(124, 185, 232, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(160, 231, 160, 0.3) 0%, transparent 20%);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+ 
+        .container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+ 
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .emoji-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+ 
+        .emoji-title .emoji {
+            font-size: 2.5rem;
+            animation: bounce 2s infinite alternate;
+        }
+ 
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+ 
+        .upload-area {
+            border: 3px dashed var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255, 240, 245, 0.5);
+        }
+ 
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(255, 240, 245, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 133, 162, 0.3);
+        }
+ 
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+ 
+        .upload-text {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+ 
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+ 
+        .input-group {
+            width: 100%;
+            margin-bottom: 15px;
+            position: relative;
+        }
+ 
+        .cute-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 25px;
+            font-size: 1rem;
+            color: var(--text-color);
+            background-color: #FFFFFF;
+            outline: none;
+            font-family: 'Nunito', sans-serif;
+        }
+ 
+        .cute-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.2);
+        }
+ 
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+ 
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+ 
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 240, 245, 0.5);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--secondary-color);
+        }
+ 
+        .option-group:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.2);
+        }
+ 
+        .option-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+ 
+        .option-label .emoji {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+ 
+        .cute-select, .cute-range, .cute-number {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            background-color: #FFFFFF;
+            outline: none;
+            font-family: 'Nunito', sans-serif;
+        }
+ 
+        .cute-select:focus, .cute-range:focus, .cute-number:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.2);
+        }
+ 
+        .cute-range {
+            -webkit-appearance: none;
+            height: 10px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            border-radius: 5px;
+            outline: none;
+            padding: 0;
+        }
+ 
+        .cute-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+ 
+        .cute-range::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+ 
+        .cute-button {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Nunito', sans-serif;
+        }
+ 
+        .cute-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+        }
+ 
+        .cute-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(255, 133, 162, 0.3);
+        }
+ 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+ 
+        .canvas-container {
+            position: relative;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background-color: #f0f0f0;
+            background-image:
+                linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
+                linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
+                linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            width: 100%;
+            max-width: 600px;
+        }
+ 
+        #canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+ 
+        .security-notice {
+            background-color: var(--success-color);
+            color: #2E7D32;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(160, 231, 160, 0.3);
+            flex-wrap: wrap;
+        }
+ 
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+        }
+ 
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+ 
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+ 
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+ 
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--secondary-color);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+ 
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+ 
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+ 
+        .heart {
+            color: var(--primary-color);
+            animation: heartbeat 1.5s infinite;
+            font-size: 1.2rem;
+        }
+ 
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.2); }
+            10% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            20% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+ 
+        /* 彩虹文字效果 */
+        .rainbow-text {
+            background-image: linear-gradient(90deg,
+                #FF85A2, #FFA07A, #FFD700, #A0E7A0, #7CB9E8, #9370DB, #FF85A2);
+            background-size: 600% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 6s linear infinite;
+        }
+ 
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+ 
+        /* 可爱的复选框 */
+        .cute-checkbox {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+ 
+        .cute-checkbox input[type="checkbox"] {
+            display: none;
+        }
+ 
+        .cute-checkbox label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            color: var(--text-color);
+        }
+ 
+        .cute-checkbox .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 6px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            background-color: white;
+        }
+ 
+        .cute-checkbox input[type="checkbox"]:checked + label .checkbox-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+ 
+        .cute-checkbox input[type="checkbox"]:checked + label .checkbox-custom::after {
+            content: "&#10003;";
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+ 
+        /* 气泡效果 */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            animation: float 4s infinite ease-in-out;
+            z-index: -1;
+        }
+ 
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+ 
+        /* 颜色选择器样式 */
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            justify-content: center;
+        }
+ 
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            transition: all 0.2s;
+        }
+ 
+        .color-option.selected {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 133, 162, 0.4);
+        }
+ 
+        /* 预设模板选择器 */
+        .templates {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            justify-content: center;
+        }
+ 
+        .template {
+            width: 100px;
+            height: 60px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            overflow: hidden;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            background-size: cover;
+            background-position: center;
+        }
+ 
+        .template:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .template.selected {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.3);
+        }
+ 
+        /* 提示气泡 */
+        .tip-bubble {
+            position: fixed;
+            background-color: #FFF9C4;
+            color: #5D4037;
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            max-width: 250px;
+            z-index: 100;
+            animation: tipAppear 0.3s forwards;
+            display: none;
+            text-align: center;
+        }
+ 
+        .tip-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #FFF9C4 transparent transparent;
+        }
+ 
+        @keyframes tipAppear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+ 
+        /* 进度条样式 */
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+ 
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+ 
+        /* 主题切换按钮 */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+ 
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+ 
+        /* 暗色主题 */
+        body.dark-theme {
+            --primary-color: #FF85A2;
+            --secondary-color: #FF5C8D;
+            --accent-color: #7CB9E8;
+            --text-color: #E0E0E0;
+            --light-bg: #2D2D2D;
+            --card-bg: #3D3D3D;
+            --success-color: #66BB6A;
+            --warning-color: #FFCA28;
+            background-color: var(--light-bg);
+        }
+ 
+        body.dark-theme .container {
+            background-color: var(--card-bg);
+        }
+ 
+        body.dark-theme .option-group {
+            background-color: rgba(255, 133, 162, 0.1);
+        }
+ 
+        body.dark-theme .security-notice {
+            background-color: rgba(102, 187, 106, 0.2);
+            color: #A5D6A7;
+        }
+ 
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+ 
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+ 
+        /* 水印预览 */
+        .watermark-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            display: none;
+        }
+ 
+        /* 响应式设计增强 */
+        [url=home.php?mod=space&uid=945662]@media[/url] (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+                margin-top: 10px;
+                border-radius: 12px;
+            }
+             
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+             
+            .emoji-title .emoji {
+                font-size: 2rem;
+            }
+             
+            .options-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+             
+            .cute-button {
+                padding: 10px 15px;
+                font-size: 0.95rem;
+                margin: 5px;
+            }
+             
+            .upload-area {
+                padding: 20px 15px;
+            }
+             
+            .upload-icon {
+                font-size: 2.5rem;
+            }
+             
+            .upload-text {
+                font-size: 1rem;
+            }
+             
+            .templates {
+                gap: 10px;
+            }
+             
+            .template {
+                width: 80px;
+                height: 50px;
+                font-size: 0.7rem;
+            }
+             
+            .security-notice {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+             
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                font-size: 1.3rem;
+            }
+             
+            .color-picker {
+                gap: 8px;
+            }
+             
+            .color-option {
+                width: 25px;
+                height: 25px;
+            }
+             
+            .cute-checkbox label {
+                font-size: 0.9rem;
+            }
+             
+            .cute-checkbox .checkbox-custom {
+                width: 20px;
+                height: 20px;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+             
+            .container {
+                padding: 15px 10px;
+            }
+             
+            h1 {
+                font-size: 1.4rem;
+            }
+             
+            .emoji-title .emoji {
+                font-size: 1.8rem;
+            }
+             
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+             
+            .cute-button {
+                width: 100%;
+                max-width: 250px;
+            }
+             
+            .template {
+                width: 70px;
+                height: 45px;
+                font-size: 0.65rem;
+            }
+             
+            .option-label {
+                font-size: 0.9rem;
+            }
+             
+            .option-label .emoji {
+                font-size: 1rem;
+            }
+             
+            .footer {
+                font-size: 0.8rem;
+            }
+             
+            .bubble {
+                display: none;
+            }
+        }
+ 
+        /* 触摸设备优化 */
+        @media (hover: none) {
+            .cute-button:hover {
+                transform: none;
+                box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
+            }
+             
+            .option-group:hover {
+                transform: none;
+                border-color: var(--secondary-color);
+            }
+             
+            .upload-area:hover {
+                transform: none;
+                border-color: var(--secondary-color);
+                background-color: rgba(255, 240, 245, 0.5);
+            }
+             
+            .template:hover {
+                transform: none;
+                box-shadow: none;
+            }
+             
+            /* 添加触摸反馈 */
+            .cute-button:active,
+            .option-group:active,
+            .upload-area:active,
+            .template:active,
+            .color-option:active {
+                transform: scale(0.98);
+            }
+        }
+ 
+        /* 打印样式 */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+             
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+             
+            .button-container,
+            .options-container,
+            .upload-area,
+            .theme-toggle,
+            .bubble,
+            .footer {
+                display: none;
+            }
+             
+            .canvas-container {
+                box-shadow: none;
+                background: none;
+            }
+             
+            .security-notice {
+                border: 1px solid #2E7D32;
+                background: none;
+                color: #2E7D32;
+            }
+        }
+ 
+        /* 屏幕阅读器辅助 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+ 
+        /* 加载动画增强 */
+        .loading-text {
+            position: absolute;
+            bottom: -30px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            text-align: center;
+            width: 100%;
+        }
+ 
+        /* 安全提示增强 */
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2E7D32;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 屏幕阅读器辅助 -->
+    <div class="sr-only">可爱</div>
+ 
+    <!-- 装饰性气泡 -->
+    <div class="bubble" style="width: 30px; height: 30px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 20px; height: 20px; top: 20%; left: 80%; animation-delay: 1s;"></div>
+    <div class="bubble" style="width: 40px; height: 40px; top: 70%; left: 15%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 25px; height: 25px; top: 80%; left: 70%; animation-delay: 3s;"></div>
+    <div class="bubble" style="width: 35px; height: 35px; top: 40%; left: 90%; animation-delay: 1.5s;"></div>
+ 
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题颜色">&#127769;</button>
+ 
+   
+
+
+        <div class="emoji-title">
+           
+            <h1><span class="rainbow-text">想象力比知识更重要，因为知识是有限的，而想象力概括着世界上的一切</span></h1>
+          
+        </div>
+    
+               
+ 
+          
+
+
+ 
+  <!-- 预设模板选择 -->
+        <div class="option-group" style="width: 100%;">
+            <div class="option-label">
+                <span class="emoji" role="img" aria-hidden="true">&#128221;</span> 钟表可以回到起点，却已不是昨天；感情可以回到原点，却再也不像从前；人生只有因果，但没有如果，时光不能倒着走，失去了就别再回头，
+且行且珍惜
+            </div>
+
+
+
+
+
+
+             <button id="preview-watermark" class="cute-button" style="background: linear-gradient(45deg, #9C27B0, #673AB7);" aria-label="预览水印效果">
+                <span role="img" aria-hidden="true">&#128065;&#65039;</span> 积极的思考“拥有信念比拥有才能更重要”我能做到 
+            </button>
+            <button id="add-watermark" class="cute-button" aria-label="添加水印">
+                <span role="img" aria-hidden="true">&#10024;</span> 文法。掌握语言。逻辑。掌握逻辑，才能读懂东西。修辞。为了说服别人。 算术。管理财产。 几何。推理。音乐。音乐被视为与世间的法则有关。 天文学。则是自然界的法则
+
+
+ <span role="img" aria-hidden="true">&#10024;</span>
+            </button>
+
+
+ <div class="input-group">
+            <input type="text" id="watermark-text" placeholder="输入文字" class="cute-input" aria-label="水印文字">
+            <div class="input-icon" role="img" aria-hidden="true">&#9999;&#65039;</div>
+        </div>
+ 
+       
+ 
+
+       <div class="security-notice" role="alert">
+           
+ 在这一天中我是拼尽全力让自己开心和满足的。我不知道更加美好的生活是怎样的，我能做到的只是尽力接受生活所赋予我的，让每个当下都是完美无缺的
+            
+              
+                </div>
+
+
+
+
+
+
+
+            <div class="watermark-preview" id="watermark-preview" aria-hidden="true"></div>
+            <canvas id="canvas" width="337" height="213" aria-label="水印图片画布"></canvas>
+        </div>
+
+
+ 
+      
+            </div>
+        </div>
+    </div>
+ 
+    <div class="footer" role="contentinfo">
+        <div>HE <span class="heart" role="img" aria-label="爱心">&#10084;&#65039;</span> 制作 ：启怡</div>
+      
+    </div>
+ 
+    <!-- 提示气泡 -->
+    <div class="tip-bubble" id="tip-bubble" role="status" aria-live="polite"></div>
+ 
+    <script>
+        let originalImage = null;
+        let selectedColor = 'white';
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const loading = document.getElementById('loading');
+        const watermarkPreview = document.getElementById('watermark-preview');
+        const tipBubble = document.getElementById('tip-bubble');
+ 
+        // 检测设备类型
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+            document.body.classList.add('mobile-device');
+        }
+ 
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeToggle.textContent = '&#9728;&#65039;';
+                themeToggle.setAttribute('aria-label', '切换到亮色主题');
+                showTip('已切换到暗色主题 &#127769;', themeToggle);
+            } else {
+                themeToggle.textContent = '&#127769;';
+                themeToggle.setAttribute('aria-label', '切换到暗色主题');
+                showTip('已切换到亮色主题 &#9728;&#65039;', themeToggle);
+            }
+        });
+ 
+        // 显示提示气泡
+        function showTip(message, element, duration = 2000) {
+            const rect = element.getBoundingClientRect();
+            tipBubble.textContent = message;
+            tipBubble.style.display = 'block';
+             
+            // 移动设备上的位置调整
+            if (isMobile) {
+                tipBubble.style.top = '50%';
+                tipBubble.style.left = '50%';
+                tipBubble.style.transform = 'translate(-50%, -50%)';
+            } else {
+                tipBubble.style.top = (rect.top - 50) + 'px';
+                tipBubble.style.left = (rect.left + rect.width / 2) + 'px';
+                tipBubble.style.transform = 'translateX(-50%)';
+            }
+             
+            setTimeout(() => {
+                tipBubble.style.display = 'none';
+            }, duration);
+        }
+ 
+  
+
+
+
+    </script>
+</body>
+</html>
