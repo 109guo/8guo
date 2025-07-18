@@ -16,11 +16,6 @@
         div.innerHTML = 'Hi欢迎我们Yi家的主人回来:时光空间'+arr[1];
     </script>
 </div>
-
-
-
-
-
 <style type="text/css">
 .menu_list{width:268px;margin:0 auto;}
 .menu_head{
@@ -28,25 +23,25 @@
 	line-height: 47px;
 	padding-left: 38px;
 	font-size: 14px;
-	color: #525252;
+	color: #1b82f1;
 	cursor: pointer;
-	border-left: 1px solid #e1e1e1;
-	border-right: 1px solid #e1e1e1;
-	border-bottom: 1px solid #e1e1e1;
-	border-top: 1px solid #F1F1F1;
+	border-left: 1px solid #FFFFFF0;
+	border-right: 1px solid #FFFFFF0;
+	border-bottom: 1px solid #FFFFFF0;
+	border-top: 1px solid #FFFFFF0;
 	position: relative;
 	margin: 0px;
 	font-weight: bold;
-	background: #f1f1f1 url(images/pro_left.png) center right no-repeat;
+	background: #FFFFFF0 url(images/pro_left.png) center right no-repeat;
 }
-.menu_list .current{background:#f1f1f1 url(images/pro_down.png) center right no-repeat;}
+.menu_list .current{background:#FFFFFF0 url(images/pro_down.png) center right no-repeat;}
 .menu_body{
 	line-height: 38px;
-	border-left: 1px solid #e1e1e1;
+	border-left: 1px solid #FFFFFF0;
 	backguound: #fff;
-	border-right: 1px solid #e1e1e1;
+	border-right: 1px solid #FFFFFF0;
 }
-.menu_body a{display:block;height:38px;line-height:38px;padding-left:38px;color:#777777;background:#fff;text-decoration:none;border-bottom:1px solid #e1e1e1;}
+.menu_body a{display:block;height:38px;line-height:38px;padding-left:38px;color:#FFFFFF0;background:#FFFFFF0;text-decoration:none;border-bottom:1px solid #FFFFFF0;}
 .menu_body a:hover{text-decoration:none;}
 </style>
 </head>
@@ -56,7 +51,7 @@
 <div id="firstpane" class="menu_list">
 	<h3 class="menu_head current">哲学</h3>
 	<div style="display:block" class="menu_body">
-		<a href="http://www.16sucai.com">科学技术哲学</a>
+		<a href="https://he109.atomgit.net/music/">音乐学</a>
 		<a href="彩色YI.html">个性学</a>
 		<a href="彩色字H.html">彩色字H</a>
 		<a href="彩色字.html">彩色字</a>
@@ -122,5 +117,500 @@ $(document).ready(function(){
 </script>
 <!-- 代码部分end -->
 
+
+    <style type="text/css">
+        :root {
+            --primary-color: #FFFFFF0;
+            --secondary-color: #FFFFFF0;
+            --text-color: rgba(255,255,255,0.2);
+            --bg-opacity: color: rgba(255,255,255,0.2);
+            --border-radius: 8px;
+            --transition: all 0.5s cubic-bezier(0.62, 0.21, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .index-one {
+            display: flex;
+            margin: 0 0 -1rem;
+            position: relative;
+            height: 100vh;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: 0 0 10px 2px rgb(0 0 0 / 30%);
+            padding: 3.5rem;
+        }
+
+        .index-welcome {
+            z-index: 1;
+            max-width: 50%;
+        }
+
+        .index-welcome-thanks {
+            font-size: 1.75rem;
+            font-family: 'YouSheBiaoTiHei';
+            animation: marginUp 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
+            animation-delay: 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .index-welcome-greetings {
+            font-family: 'OPPOSans-M';
+            text-transform: capitalize;
+            animation: marginUp 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
+            animation-delay: 0.6s;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .weclome {
+            position: absolute;
+            height: 1rem;
+            bottom: 2rem;
+            line-height: 1;
+            opacity: 0.8;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .weclome-bg {
+            position: absolute;
+            bottom: 2.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .weclome span {
+            font-family: 'Edo-SZ';
+            font-size: 0.75rem;
+            vertical-align: middle;
+        }
+
+        .weclome i {
+            height: 0.65rem;
+            width: 0.65rem;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+            border: 0.1rem solid #fff;
+            display: block;
+            animation: weclome-i 3s var(--transition) infinite both;
+        }
+
+        .weclome h1, .weclome h2, .weclome h3, .weclome h4, .weclome h5 {
+            animation: weclome-pc 3s var(--transition) 1 forwards;
+            overflow: hidden;
+            width: 0;
+            height: 0.625rem;
+            position: absolute;
+            font-size: 0.625rem;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            white-space: nowrap;
+        }
+
+        .weclome h1 { animation-delay: 0.5s; }
+        .weclome h2 { animation-delay: 3s; }
+        .weclome h3 { animation-delay: 6s; }
+        .weclome h4 { animation-delay: 9s; }
+        .weclome h5 { animation: weclome-pcf 4s var(--transition) 1 12s forwards; }
+
+        .site-header {
+            min-height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            z-index: -2;
+            box-shadow: none !important;
+            border-radius: 0;
+        }
+
+        .site-header:after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            background: #060c19;
+            position: absolute;
+            z-index: -3;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0 0 -1rem -1rem;
+            position: absolute;
+            top: 2rem;
+            right: 3.5rem;
+            z-index: 10;
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .index-new-post {
+            display: flex;
+            width: 40%;
+            flex-direction: column;
+            margin: auto 0 0;
+            align-items: flex-end;
+            max-width: 20rem;
+        }
+
+        .index-new-post .part-title {
+            text-align: right;
+            animation: marginRight 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
+            animation-delay: 0.4s;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .index-new-post li {
+            display: block;
+            margin: 1rem 0 0;
+            width: 100%;
+            transition: all 0.5s;
+            position: relative;
+            list-style: none;
+        }
+
+        .index-new-post li:hover .entry-post {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .entry-post img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        .entry-header {
+            transition: all 0.5s;
+            z-index: 2;
+            position: relative;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .index-new-post li:nth-child(2) .entry-header { animation-delay: 0.3s; }
+        .index-new-post li:nth-child(3) .entry-header { animation-delay: 0.4s; }
+        .index-new-post li:nth-child(4) .entry-header { animation-delay: 0.5s; }
+
+        .index-new-post .paging-navigation {
+            animation: marginRight 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
+            animation-delay: 0.6s;
+            margin-top: 1rem;
+        }
+
+        .entry-title {
+            border-bottom: 1px solid rgb(124 124 124 / 20%);
+            opacity: 0.8;
+            padding: 0 0 0.5em;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-categories {
+            opacity: 1;
+            margin: 0;
+            display: inline;
+            font-size: 0.8rem;
+        }
+
+        .post_content {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .entry-date {
+            float: right;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+        }
+
+        @keyframes marginUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes marginRight {
+            0% { transform: translateX(50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes weclome-i {
+            0%, 100% { transform: scale(0.8); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes weclome-pc {
+            0% { width: 0; }
+            100% { width: 6rem; }
+        }
+
+        @keyframes weclome-pcf {
+            0% { width: 0; }
+            100% { width: 8rem; }
+        }
+
+        @keyframes hue-rotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes space {
+            0% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (min-width: 1025px) {
+            .index-one, .index-one a {
+                color: rgb(255 255 255 / 85%);
+                text-shadow: 0 1px 5px rgb(0 0 0 / 30%);
+            }
+
+            .entry-title { font-size: inherit; }
+
+            .entry-header {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                background: var(--bg-opacity);
+                box-shadow: 0 0 10px 2px rgb(0 0 0 / 10%);
+                animation: marginRight 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
+                animation-delay: 0.2s;
+            }
+
+            .entry-post {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: all 1s;
+                transform: scale(1.1);
+                filter: brightness(0.8);
+                z-index: -1;
+            }
+
+            .post_content, .entry-title {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .index-new-post li:hover .entry-header {
+                background: var(--s-background, rgb(0 0 0 / 10%));
+            }
+
+            .index-new-post li:hover { width: 120%; }
+
+            canvas {
+                animation: space 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both, hue-rotate 15s linear infinite;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .site-header {
+                min-height: 50%;
+                position: fixed;
+            }
+
+            .index-one {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                padding: 0;
+                margin: 0;
+                align-items: stretch;
+            }
+
+            .index-welcome {
+                margin: max(30vh, 6rem) 0 1rem;
+                text-shadow: 0 1px 5px rgb(0 0 0 / 30%);
+                color: rgb(255 255 255 / 80%);
+                padding: 0 1rem;
+                width: 100%;
+            }
+
+            .index-new-post {
+                width: 100%;
+                max-width: none;
+                align-items: stretch;
+                padding: 1rem;
+                background: var(--s-background, #fafafa);
+                border-radius: var(--border-radius) var(--border-radius) 0 0;
+                box-shadow: 0 0 10px 2px rgb(0 0 0 / 10%);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                animation: marginUp 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
+                animation-delay: 0.5s;
+                margin-top: max(30vh, 6rem);
+            }
+
+            .index-new-post li {
+                background: var(--s-background, white);
+                border-radius: var(--border-radius);
+                box-shadow: 0 5px 30px 0 rgb(0 0 0 / 5%);
+            }
+
+            .entry-post img { border-radius: var(--border-radius); }
+
+            .index-new-post .part-title { text-align: left; animation: none; }
+
+            .index-rand-post { display: none; }
+
+            canvas {
+                height: 300%;
+                width: 200%;
+                transform: translate(-50%, -30%);
+                left: 50%;
+                position: absolute;
+            }
+
+            .nav-links {
+                justify-content: center;
+                right: 0;
+                left: 0;
+                top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+                    <div class="entry-post">
+                    <img src="https://picsum.photos/400/225?random=1" alt="前端动画示例">
+                </div>
+            </li>
+            <li>
+      
+        </div>
+
+        <div class="site-header">
+            <canvas id="canvas"></canvas>
+        </div>
+    <script type="text/javascript">
+        "use strict";
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = window.innerHeight;
+        const hue = 217;
+        const stars = [];
+        let count = 0;
+        const maxStars = 1000;
+
+        // 创建星星渐变
+        const canvas2 = document.createElement('canvas');
+        const ctx2 = canvas2.getContext('2d');
+        canvas2.width = 100;
+        canvas2.height = 100;
+        const half = canvas2.width / 2;
+        const gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+        gradient2.addColorStop(0.025, '#fff');
+        gradient2.addColorStop(0.1, `hsl(${hue}, 61%, 33%)`);
+        gradient2.addColorStop(0.25, `hsl(${hue}, 64%, 6%)`);
+        gradient2.addColorStop(1, 'transparent');
+        ctx2.fillStyle = gradient2;
+        ctx2.beginPath();
+        ctx2.arc(half, half, half, 0, Math.PI * 2);
+        ctx2.fill();
+
+        function random(min, max) {
+            if (arguments.length < 2) {
+                max = min;
+                min = 0;
+            }
+            if (min > max) {
+                [max, min] = [min, max];
+            }
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        class Star {
+            constructor() {
+                this.orbitRadius = random(w / 2 - 50);
+                this.radius = random(100, this.orbitRadius) / 10;
+                this.orbitX = w / 2;
+                this.orbitY = h / 2;
+                this.timePassed = random(0, maxStars);
+                this.speed = random(this.orbitRadius) / 1000000;
+                this.alpha = random(2, 10) / 10;
+                stars[count++] = this;
+            }
+
+            draw() {
+                const x = Math.sin(this.timePassed + 1) * this.orbitRadius + this.orbitX;
+                const y = Math.cos(this.timePassed) * this.orbitRadius / 2 + this.orbitY;
+                const twinkle = random(10);
+
+                if (twinkle === 1 && this.alpha > 0) {
+                    this.alpha -= 0.05;
+                } else if (twinkle === 2 && this.alpha < 1) {
+                    this.alpha += 0.05;
+                }
+
+                ctx.globalAlpha = this.alpha;
+                ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+                this.timePassed += this.speed;
+            }
+        }
+
+        // 初始化星星
+        for (let i = 0; i < maxStars; i++) {
+            new Star();
+        }
+
+        function animation() {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.globalAlpha = 0.8;
+            ctx.fillStyle = `hsla(${hue}, 64%, 6%, 1)`;
+            ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = 'lighter';
+            
+            stars.forEach(star => star.draw());
+            window.requestAnimationFrame(animation);
+        }
+
+        // 窗口大小变化时重绘
+        window.addEventListener('resize', () => {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        });
+
+        animation();
+    </script>
 </body>
 </html>
