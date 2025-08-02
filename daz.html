@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单行打字</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .cursor {
+            border-right: 2px solid #3B82F6;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #3B82F6 }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
+    <div class="text-white font-mono text-xl md:text-2xl">
+        <span id="typing-text"></span><span class="cursor"></span>
+    </div>
+
+    <script>
+        // 要显示的文本数组
+        const texts = [
+            "做一步，想十步，看百步。练脸皮放下面子才会有面子练自信自己不自信，谁会信你练胆识敢于任何人眼神对视",
+ "练心智不生气，不计较，不被人激怒练沉稳再大的事也要表现淡定练口才会赞美，会幽默，会拒绝练气质要抬头挺胸，腰板挺直",
+            "钟表可以回到起点，却已不是昨天；感情可以回到原点，却再也不像从前；人生只有因果，但没有如果，时光不能倒着走，失去了就别再回头，且行且珍惜",
+      
+        ];
+        
+        // 配置参数
+        const typeSpeed = 150;    // 打字速度(毫秒/字符)
+        const deleteSpeed = 99;   // 删除速度(毫秒/字符)
+        const delayBetween = 2000; // 文本间延迟(毫秒)
+        
+        // DOM元素
+        const typingElement = document.getElementById('typing-text');
+        
+        // 状态变量
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        // 打字效果函数
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                // 删除模式
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // 打字模式
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            // 计算延迟时间
+            let delay = isDeleting ? deleteSpeed : typeSpeed;
+            
+            // 检查是否完成当前文本
+            if (!isDeleting && charIndex === currentText.length) {
+                // 完成输入，准备删除
+                isDeleting = true;
+                delay = delayBetween;
+            } else if (isDeleting && charIndex === 0) {
+                // 完成删除，切换到下一个文本
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                delay = 500;
+            }
+            
+            // 继续打字循环
+            setTimeout(type, delay);
+        }
+        
+        // 开始打字效果
+        type();
+    </script>
+</body>
+</html>
+    
