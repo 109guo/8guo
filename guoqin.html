@@ -2,129 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="./guo.ico">
-  <link rel="apple-touch-icon" href="./guo.ico">
-
     <title>Yi家庭</title>
-</head>
-<body>
-<div id="bigBox">
-    <script>
-        var div = document.querySelector('div');
-        var a =location.search.substr(1);
-        var arr = a.split('=');
-         div.innerHTML = 'Hi欢迎我们Yi家的主人回来:时光空间'+arr[1];
-    </script>
-</div>
-<style type="text/css">
-.menu_list{width:268px;margin:0 auto;}
-.menu_head{
-	height: 47px;
-	line-height: 47px;
-	padding-left: 38px;
-	font-size: 14px;
-	color: #1b82f1;
-	cursor: pointer;
-	border-left: 1px solid #FFFFFF0;
-	border-right: 1px solid#FFFFFF0;
-	border-bottom: 1px solid #FFFFFF0;
-	border-top: 1px solid #FFFFFF0;
-	position: relative;
-	margin: 0px;
-	font-weight: bold;
-	background: #FFFFFF0 url(images/pro_left.png) center right no-repeat;
-}
-.menu_list .current{background:#FFFFFF0 url(images/pro_down.png) center right no-repeat;}
-.menu_body{
-	line-height: 38px;
-	border-left: 1px solid #FFFFFF0;
-	backguound: #FFFFFF0;
-	border-right: 1px solid #FFFFFF0;
-}
-.menu_body a{display:block;height:38px;line-height:38px;padding-left:38px;color:#FFFFFF0;background:#FFFFFF0;text-decoration:none;border-bottom:1px solid #FFFFFF0;}
-.menu_body a:hover{text-decoration:none;}
-</style>
-</head>
-<body>
+    
+    <!-- 折叠菜单样式 -->
+    <style type="text/css">
+        .menu_list{width:268px;margin:0 auto;}
+        .menu_head{
+            height: 47px;
+            line-height: 47px;
+            padding-left: 38px;
+            font-size: 14px;
+            color: #1b82f1;
+            cursor: pointer;
+            border: 1px solid transparent;
+            position: relative;
+            margin: 0px;
+            font-weight: bold;
+            background: transparent;
+        }
+        /* 使用CSS伪元素和字符替代图片箭头 */
+        .menu_head::after {
+            content: '►';
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s ease;
+        }
+        .menu_list .current::after {
+            transform: rotate(90deg);
+        }
+        .menu_body{
+            line-height: 38px;
+            border-left: 1px solid transparent;
+            background: transparent;
+            border-right: 1px solid transparent;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            max-height: 0;
+        }
+        .menu_body.active {
+            max-height: 500px; /* 足够容纳所有子项 */
+        }
+        .menu_body a{
+            display:block;
+            height:38px;
+            line-height:38px;
+            padding-left:38px;
+            color:#1b82f1;
+            background:transparent;
+            text-decoration:none;
+            border-bottom:1px solid transparent;
+        }
+        .menu_body a:hover{
+            text-decoration:underline;
+        }
+    </style>
 
-
-<!-- 代码部分begin -->
-<div id="firstpane" class="menu_list">
-	<h3 class="menu_head current">哲学</h3>
-	<div style="display:block" class="menu_body">
-		<a href="https://he109.atomgit.net/music/">音乐学</a>
-		<a href="彩色YI.html">个性学</a>
-		<a href="彩色字H.html">彩色字H</a>
-		<a href="彩色字.html">彩色字</a>
-		<a href="压扁效果.html">压扁效果</a>
-		<a href="md.html">笔记He更新中</a>
-		<a href="#">中国哲学</a>
-		<a href="#">马克思主义哲学</a>
-	</div>
-	<h3 class="menu_head">经济学</h3>
-	<div style="display:none" class="menu_body">
-		<a href="显示txt字.html">显txt字</a>
-		<a href="#">理论经济学</a>
-		<a href="#">国民经济学</a>
-		<a href="#">区域经济学</a>
-		<a href="#">产业经济学</a>
-		<a href="#">国际贸易学</a>
-		<a href="#">劳动经济学</a>
-		<a href="#">政治经济学</a>
-	</div>
-	<h3 class="menu_head">法学</h3>
-	<div style="display:none" class="menu_body">
-		<a href="#">马克思主义基本原理</a>
-		<a href="#">马克思主义发展史</a>
-		<a href="#">马克思主义中国化研究</a>
-		<a href="#">国外马克思主义研究</a>
-		<a href="#">思想政治教育</a>
-	</div>
-	<h3 class="menu_head">教育学</h3>
-	<div style="display:none" class="menu_body">
-		<a href="#">体育人文社会学</a>
-		<a href="#">体育教育训练学</a>
-		<a href="#">民族传统体育学</a>
-		<a href="#">发展与教育心理学</a>
-		<a href="#">应用心理学</a>
-		<a href="#">教育学原理</a>
-		<a href="#">课程与教学论</a>
-		<a href="#">比较教育学</a>
-	</div>
-	<h3 class="menu_head">工学</h3>
-	<div style="display:none" class="menu_body">
-		<a href="#">一般力学与力学基础</a>
-		<a href="#">固体力学</a>
-		<a href="#">流体力学</a>
-		<a href="#">工程力学</a>
-		<a href="#">机械制造及其自动化</a>
-		<a href="#">机械电子工程</a>
-	</div>
-</div>
-<script src="jquery.js"></script>
-<script>
-$(document).ready(function(){
-	$("#firstpane .menu_body:eq(0)").show();
-	$("#firstpane h3.menu_head").click(function(){
-		$(this).addClass("current").next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
-		$(this).siblings().removeClass("current");
-	});
-	$("#secondpane .menu_body:eq(0)").show();
-	$("#secondpane h3.menu_head").mouseover(function(){
-		$(this).addClass("current").next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
-		$(this).siblings().removeClass("current");
-	});
-});
-</script>
-<!-- 代码部分end -->
-
-
+    <!-- 全局样式及动画 -->
     <style type="text/css">
         :root {
-            --primary-color: #FFFFFF0;
-            --secondary-color: #FFFFFF0;
-            --text-color: rgba(255,255,255,0.2);
-            --bg-opacity: color: rgba(255,255,255,0.2);
+            --primary-color: rgba(255,255,255,0.8);
+            --secondary-color: rgba(255,255,255,0.6);
+            --text-color: rgba(255,255,255,0.85);
+            --bg-opacity: rgba(255,255,255,0.1);
             --border-radius: 8px;
             --transition: all 0.5s cubic-bezier(0.62, 0.21, 0.25, 1);
         }
@@ -161,14 +100,14 @@ $(document).ready(function(){
 
         .index-welcome-thanks {
             font-size: 1.75rem;
-            font-family: 'YouSheBiaoTiHei';
+            font-family: sans-serif;
             animation: marginUp 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
             animation-delay: 0.3s;
             margin-bottom: 1rem;
         }
 
         .index-welcome-greetings {
-            font-family: 'OPPOSans-M';
+            font-family: sans-serif;
             text-transform: capitalize;
             animation: marginUp 1.5s var(--transition) 1 both, opacity 1.5s var(--transition) 1 both;
             animation-delay: 0.6s;
@@ -176,7 +115,7 @@ $(document).ready(function(){
             margin-bottom: 2rem;
         }
 
-        .weclome {
+        .welcome {
             position: absolute;
             height: 1rem;
             bottom: 2rem;
@@ -186,19 +125,19 @@ $(document).ready(function(){
             transform: translateX(-50%);
         }
 
-        .weclome-bg {
+        .welcome-bg {
             position: absolute;
             bottom: 2.5rem;
             letter-spacing: 0.1em;
         }
 
-        .weclome span {
-            font-family: 'Edo-SZ';
+        .welcome span {
+            font-family: sans-serif;
             font-size: 0.75rem;
             vertical-align: middle;
         }
 
-        .weclome i {
+        .welcome i {
             height: 0.65rem;
             width: 0.65rem;
             position: absolute;
@@ -208,11 +147,11 @@ $(document).ready(function(){
             border-radius: 50%;
             border: 0.1rem solid #fff;
             display: block;
-            animation: weclome-i 3s var(--transition) infinite both;
+            animation: welcome-i 3s var(--transition) infinite both;
         }
 
-        .weclome h1, .weclome h2, .weclome h3, .weclome h4, .weclome h5 {
-            animation: weclome-pc 3s var(--transition) 1 forwards;
+        .welcome h1, .welcome h2, .welcome h3, .welcome h4, .welcome h5 {
+            animation: welcome-pc 3s var(--transition) 1 forwards;
             overflow: hidden;
             width: 0;
             height: 0.625rem;
@@ -225,11 +164,11 @@ $(document).ready(function(){
             white-space: nowrap;
         }
 
-        .weclome h1 { animation-delay: 0.5s; }
-        .weclome h2 { animation-delay: 3s; }
-        .weclome h3 { animation-delay: 6s; }
-        .weclome h4 { animation-delay: 9s; }
-        .weclome h5 { animation: weclome-pcf 4s var(--transition) 1 12s forwards; }
+        .welcome h1 { animation-delay: 0.5s; }
+        .welcome h2 { animation-delay: 3s; }
+        .welcome h3 { animation-delay: 6s; }
+        .welcome h4 { animation-delay: 9s; }
+        .welcome h5 { animation: welcome-pcf 4s var(--transition) 1 12s forwards; }
 
         .site-header {
             min-height: 100%;
@@ -267,6 +206,7 @@ $(document).ready(function(){
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s;
+            color: var(--text-color);
         }
 
         .nav-links a:hover {
@@ -288,6 +228,7 @@ $(document).ready(function(){
             animation-delay: 0.4s;
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
+            color: var(--text-color);
         }
 
         .index-new-post li {
@@ -302,13 +243,6 @@ $(document).ready(function(){
         .index-new-post li:hover .entry-post {
             opacity: 1;
             transform: scale(1);
-        }
-
-        .entry-post img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-            aspect-ratio: 16 / 9;
         }
 
         .entry-header {
@@ -334,6 +268,7 @@ $(document).ready(function(){
             opacity: 0.8;
             padding: 0 0 0.5em;
             margin-bottom: 0.5rem;
+            color: var(--text-color);
         }
 
         .post-categories {
@@ -341,17 +276,20 @@ $(document).ready(function(){
             margin: 0;
             display: inline;
             font-size: 0.8rem;
+            color: var(--secondary-color);
         }
 
         .post_content {
             margin: 0;
             font-size: 0.9rem;
+            color: var(--text-color);
         }
 
         .entry-date {
             float: right;
             font-size: 0.8rem;
             opacity: 0.7;
+            color: var(--secondary-color);
         }
 
         canvas {
@@ -371,17 +309,17 @@ $(document).ready(function(){
             100% { transform: translateX(0); opacity: 1; }
         }
 
-        @keyframes weclome-i {
+        @keyframes welcome-i {
             0%, 100% { transform: scale(0.8); opacity: 0.6; }
             50% { transform: scale(1.2); opacity: 1; }
         }
 
-        @keyframes weclome-pc {
+        @keyframes welcome-pc {
             0% { width: 0; }
             100% { width: 6rem; }
         }
 
-        @keyframes weclome-pcf {
+        @keyframes welcome-pcf {
             0% { width: 0; }
             100% { width: 8rem; }
         }
@@ -398,7 +336,7 @@ $(document).ready(function(){
 
         @media (min-width: 1025px) {
             .index-one, .index-one a {
-                color: rgb(255 255 255 / 85%);
+                color: var(--text-color);
                 text-shadow: 0 1px 5px rgb(0 0 0 / 30%);
             }
 
@@ -461,7 +399,7 @@ $(document).ready(function(){
             .index-welcome {
                 margin: max(30vh, 6rem) 0 1rem;
                 text-shadow: 0 1px 5px rgb(0 0 0 / 30%);
-                color: rgb(255 255 255 / 80%);
+                color: var(--text-color);
                 padding: 0 1rem;
                 width: 100%;
             }
@@ -487,8 +425,6 @@ $(document).ready(function(){
                 box-shadow: 0 5px 30px 0 rgb(0 0 0 / 5%);
             }
 
-            .entry-post img { border-radius: var(--border-radius); }
-
             .index-new-post .part-title { text-align: left; animation: none; }
 
             .index-rand-post { display: none; }
@@ -511,17 +447,110 @@ $(document).ready(function(){
     </style>
 </head>
 <body>
-                    <div class="entry-post">
-                    <img src="https://picsum.photos/400/225?random=1" alt="前端动画示例">
-                </div>
-            </li>
-            <li>
-      
-        </div>
+    <!-- 欢迎信息区域 -->
+    <div id="bigBox">
+        <script>
+            var div = document.querySelector('#bigBox');
+            var queryString = location.search.substr(1);
+            var params = queryString.split('=');
+            div.innerHTML = 'Hi欢迎我们Yi家的主人回来:时光空间' + (params[1] || '访客');
+        </script>
+    </div>
 
-        <div class="site-header">
-            <canvas id="canvas"></canvas>
+    <!-- 折叠菜单区域 -->
+    <div id="firstpane" class="menu_list">
+        <h3 class="menu_head current">H笔记</h3>
+        <div class="menu_body active">
+            <a href="https://he109.atomgit.net/music/">音乐学</a>
+            <a href="彩色YI.html">个性学</a>
+            <a href="彩色字H.html">彩色字H</a>
+            <a href="彩色字.html">彩色字</a>
+            <a href="压扁效果.html">压扁效果</a>
+            <a href="md.html">笔记He更新中</a>
+            <a href="#">H1</a>
+            <a href="#">H2</a>
         </div>
+        <h3 class="menu_head">H学</h3>
+        <div class="menu_body">
+            <a href="显示txt字.html">显txt字</a>
+            <a href="#">H3</a>
+            <a href="#">H4</a>
+            <a href="#">H5</a>
+            <a href="#">H6</a>
+            <a href="#">H7</a>
+            <a href="#">H8</a>
+            <a href="#">H9</a>
+        </div>
+        <h3 class="menu_head">H的</h3>
+        <div class="menu_body">
+            <a href="#">H10</a>
+            <a href="#">H11</a>
+            <a href="#">H12</a>
+            <a href="#">H13</a>
+            <a href="#">H14</a>
+        </div>
+        <h3 class="menu_head">H备</h3>
+        <div class="menu_body">
+            <a href="#">H15</a>
+            <a href="#">H16</a>
+            <a href="#">H17</a>
+            <a href="#">H18</a>
+            <a href="#">H19</a>
+            <a href="#">H20</a>
+            <a href="#">H21</a>
+            <a href="#">H22</a>
+        </div>
+        <h3 class="menu_head">H懿</h3>
+        <div class="menu_body">
+            <a href="#">H23</a>
+            <a href="#">H24</a>
+            <a href="#">H25</a>
+            <a href="#">H26</a>
+            <a href="#">H27</a>
+            <a href="#">H28</a>
+        </div>
+    </div>
+
+    
+
+    <!-- 星空背景容器 -->
+    <div class="site-header">
+        <canvas id="canvas"></canvas>
+    </div>
+
+
+    <!-- 原生JavaScript实现折叠菜单功能 -->
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有菜单标题
+            const menuHeads = document.querySelectorAll('#firstpane .menu_head');
+            
+            // 为每个标题添加点击事件
+            menuHeads.forEach(head => {
+                head.addEventListener('click', function() {
+                    // 切换当前标题的active状态
+                    this.classList.toggle('current');
+                    
+                    // 获取对应的内容区域
+                    const menuBody = this.nextElementSibling;
+                    
+                    // 切换内容区域的显示/隐藏
+                    menuBody.classList.toggle('active');
+                    
+                    // 关闭其他所有菜单
+                    menuHeads.forEach(otherHead => {
+                        if (otherHead !== head) {
+                            otherHead.classList.remove('current');
+                            otherHead.nextElementSibling.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <!-- 星空动画脚本 -->
     <script type="text/javascript">
         "use strict";
         const canvas = document.getElementById('canvas');
