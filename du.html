@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yi阅读</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F52BA',
+                        secondary: '#5B8FB9',
+                        neutral: '#333333',
+                        light: '#F5F5F5',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', 'serif'],
+                        mono: ['Courier New', 'monospace']
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .focus-visible-outline { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2; }
+            .article-prose { @apply max-w-4xl mx-auto text-lg leading-relaxed; }
+            .article-prose p { @apply mb-6; }
+            .article-prose h2 { @apply text-2xl md:text-3xl font-bold mt-10 mb-6 text-primary; }
+            .article-prose h3 { @apply text-xl md:text-2xl font-semibold mt-8 mb-4 text-primary/90; }
+            .font-serif-mode { font-family: Georgia, Cambria, serif !important; }
+            .font-sans-mode { font-family: Inter, system-ui, sans-serif !important; }
+            .font-mono-mode { font-family: Courier New, monospace !important; }
+            .full-width-content { @apply w-full max-w-none; }
+            .reading-highlight { @apply bg-blue-50 rounded-md transition-all duration-300; }
+            /* 全屏朗读样式 */
+            .reading-fullscreen body { @apply m-0 p-0 bg-white; }
+            .reading-fullscreen header { @apply hidden !important; }
+            .reading-fullscreen article { @apply shadow-none rounded-none p-8 md:p-16 !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header class="bg-white shadow-sm sticky top-0 z-40 transition-colors duration-300" role="banner">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0"></div>
+                <div class="flex flex-wrap gap-2 md:gap-3 items-center justify-center">
+                    <div class="bg-gray-100 p-1 rounded-md flex">
+                        <button id="font-decrease" class="p-2 rounded hover:bg-gray-200 focus-visible-outline" aria-label="减小字体">
+                            <i class="fa fa-font" aria-hidden="true"></i> A-
+                        </button>
+                        <button id="font-reset" class="p-2 rounded hover:bg-gray-200 focus-visible-outline" aria-label="重置字体大小">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </button>
+                        <button id="font-increase" class="p-2 rounded hover:bg-gray-200 focus-visible-outline" aria-label="增大字体">
+                            <i class="fa fa-font" aria-hidden="true"></i> A+
+                        </button>
+                    </div>
+                    <div class="bg-gray-100 p-1 rounded-md flex">
+                        <button id="font-sans" class="p-2 rounded hover:bg-gray-200 focus-visible-outline" aria-label="无衬线字体">
+                            <i class="fa fa-font" aria-hidden="true"></i> 无衬线
+                        </button>
+                        <button id="font-serif" class="p-2 rounded hover:bg-gray-200 focus-visible-outline" aria-label="衬线字体">
+                            <i class="fa fa-font" aria-hidden="true"></i> 衬线
+                        </button>
+                        <button id="font-mono" class="p-2 rounded hover:bg-gray-200 focus-visible-outline" aria-label="等宽字体">
+                            <i class="fa fa-font" aria-hidden="true"></i> 等宽
+                        </button>
+                    </div>
+                    <button id="read-aloud" class="p-2 bg-gray-100 rounded hover:bg-gray-200 focus-visible-outline" aria-label="开始朗读文章">
+                        <i class="fa fa-volume-up" aria-hidden="true"></i>
+                    </button>
+                    <button id="stop-reading" class="p-2 bg-gray-100 rounded hover:bg-gray-200 focus-visible-outline hidden" aria-label="停止朗读">
+                        <i class="fa fa-volume-off" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main id="main-content" class="container mx-auto px-4 py-8 full-width-content" role="main">
+        <article class="bg-white rounded-lg shadow-sm p-6 md:p-10 transition-colors duration-300">
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-primary">数字：让机会更多</h1>
+                <div class="flex flex-wrap items-center text-neutral/70 text-sm mb-6 gap-x-6 gap-y-2">
+                    <div class="flex items-center">
+                        <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                        <span>作者：Yi</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
+                        <time datetime="2023-10-15">发布日期：2025年09月19日</time>
+                    </div>
+                </div>
+            </header>
+            <div id="article-content" class="article-prose">
+                <p>自由纪录笔记方法</p>
+                <h3>1. 记录笔记不是一个结果，而是一个过程。就如同书中所说，输入不应该是目的，而是实现目的的一个过程，最终目的是为了改变自己、改变世界。所以如何有效地记笔记，有效体现在记笔记本身，也体现在记笔记之后的行为。</h3> 
+<h3>2. 如何记笔记，最重要的是做好信息预处理。首先不要一味地复制粘贴，要学会用自己的话记笔记。增加记笔记时的难度，能帮助自己更加有效地记住笔记的内容；其次，定期回顾笔记。我以前没有回顾的习惯，以至于我的 flomo 里面记了什么、没记什么，都不太清楚。通过回顾笔记，让大脑持续接受过去所记笔记的刺激，这也是对笔记进行预处理的重要方法，一方面可以对抗记忆曲线，另一方面可以推动知识内化，在这个过程中，我们可能会对过去的笔记有新的认识和思考，及时进行补充记录；最后，用标签为笔记分类。标签的功能，主要是分类和检索，它不像文件夹那样规范，我们可以给同一条笔记添加不同的标签，不同的关键词都能搜索到对应笔记，书中也提到打标签的方法，不管是原版的 P.A.R.A. 还是少楠修改之后的 I.P.R.A. 原则，都需要符合自己的使用习惯，不用一模一样，可以根据自己的需求进行调整，尽量符合自己的习惯。我也还在摸索自己的分类方法。</h3>
+       <p>好文艺分享</p>
+                <h3>3. 想象力的练习
+
+请闭上眼睛，想着某样心爱的东西，让它活生生地浮现在你脑海里，接着想象：
+
+它在你面前翻滚
+从上面往下看它
+从下面往上看它
+
+改变它的颜色，变化愈多愈好
+
+把它移到远处来观看
+
+再把它拉回到你的面前
+
+把它变成庞然大物
+
+把它变得非常的小
+
+扭曲它的外形
+
+把它恢复原状
+把它变不见了
+再把它变出来
+把它变得很重
+把它变成很轻
+
+为它增加一些配件
+减少它的一些结构
+更换一些原本的配件
+
+这些画面有没有生动地出现在你的脑海中？要经常练习喔！这对培养想象力，进而提升创造力会有很大的帮助。</h3>
+     <p>❤️</p>
+                <h3>4. 遥不可及的并非是十年之后，而是今天之前 </h3>
+                <p>馨和懿都学习</p>
+                <h3>5. 愿好书陪伴你成长20251219</h3>
+               
+             
+            </div>
+        </article>
+    </main>
+
+    <div id="a11y-announcer" aria-live="polite" class="sr-only"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {});
+        
+        // 字体调整功能
+        let currentFontSize = 100;
+        document.getElementById('font-increase').addEventListener('click', () => {
+            if (currentFontSize < 160) {
+                currentFontSize += 10;
+                applyFontSize();
+                announceChange(`字体已增大到${currentFontSize}%`);
+            }
+        });
+        document.getElementById('font-decrease').addEventListener('click', () => {
+            if (currentFontSize > 70) {
+                currentFontSize -= 10;
+                applyFontSize();
+                announceChange(`字体已减小到${currentFontSize}%`);
+            }
+        });
+        document.getElementById('font-reset').addEventListener('click', () => {
+            currentFontSize = 100;
+            applyFontSize();
+            announceChange('字体大小已重置为默认值');
+        });
+        function applyFontSize() {
+            document.documentElement.style.fontSize = `${currentFontSize}%`;
+        }
+
+        // 字体类型切换
+        document.getElementById('font-sans').addEventListener('click', () => {
+            setFontFamily('sans');
+            announceChange('已切换为无衬线字体');
+        });
+        document.getElementById('font-serif').addEventListener('click', () => {
+            setFontFamily('serif');
+            announceChange('已切换为衬线字体');
+        });
+        document.getElementById('font-mono').addEventListener('click', () => {
+            setFontFamily('mono');
+            announceChange('已切换为等宽字体');
+        });
+        function setFontFamily(type) {
+            document.body.classList.remove('font-sans-mode', 'font-serif-mode', 'font-mono-mode');
+            document.body.classList.add(`font-${type}-mode`);
+        }
+
+        // 文本朗读 + 全屏纯文本功能
+        let speechSynthesis = window.speechSynthesis;
+        let currentUtterance = null;
+        let isReading = false;
+        let readingProgress = 0;
+        let articleParagraphs = [];
+        
+        document.getElementById('read-aloud').addEventListener('click', startReading);
+        document.getElementById('stop-reading').addEventListener('click', stopReading);
+        
+        function startReading() {
+            articleParagraphs = Array.from(document.querySelectorAll('#article-content p, #article-content h2, #article-content h3'));
+            if (articleParagraphs.length === 0) {
+                announceChange('没有可朗读的内容');
+                return;
+            }
+            stopReading();
+            isReading = true;
+            // 开启全屏纯文本样式
+            document.documentElement.classList.add('reading-fullscreen');
+            document.getElementById('read-aloud').classList.add('hidden');
+            document.getElementById('stop-reading').classList.remove('hidden');
+            readNextParagraph();
+            announceChange('已进入全屏朗读模式，开始朗读文章内容');
+        }
+        
+        function readNextParagraph() {
+            if (readingProgress >= articleParagraphs.length) {
+                stopReading();
+                announceChange('文章朗读已完成');
+                return;
+            }
+            const paragraph = articleParagraphs[readingProgress];
+            highlightReadingParagraph(readingProgress);
+            
+            currentUtterance = new SpeechSynthesisUtterance(paragraph.textContent.trim());
+            currentUtterance.lang = 'zh-CN';
+            currentUtterance.rate = 0.9;
+            
+            currentUtterance.onend = function() {
+                readingProgress++;
+                readNextParagraph();
+            };
+            speechSynthesis.speak(currentUtterance);
+        }
+        
+        function highlightReadingParagraph(index) {
+            articleParagraphs.forEach(p => p.classList.remove('reading-highlight'));
+            if (index < articleParagraphs.length) {
+                articleParagraphs[index].classList.add('reading-highlight');
+                articleParagraphs[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function stopReading() {
+            if (isReading) {
+                speechSynthesis.cancel();
+                currentUtterance = null;
+                isReading = false;
+                // 退出全屏纯文本样式
+                document.documentElement.classList.remove('reading-fullscreen');
+                articleParagraphs.forEach(p => p.classList.remove('reading-highlight'));
+                document.getElementById('read-aloud').classList.remove('hidden');
+                document.getElementById('stop-reading').classList.add('hidden');
+                announceChange('已停止朗读，退出全屏模式');
+            }
+        }
+
+        function announceChange(message) {
+            const announcer = document.getElementById('a11y-announcer');
+            announcer.textContent = '';
+            setTimeout(() => {
+                announcer.textContent = message;
+            }, 100);
+        }
+    </script>
+</body>
+</html>
