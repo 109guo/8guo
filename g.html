@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阅读</title>
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            background-color: #fff;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .ctrl-btn {
+            position: fixed;
+            border: none;
+            background: transparent;
+            font-size: 1.8rem;
+            cursor: pointer;
+            bottom: 2rem;
+            right: 2rem;
+        }
+        .ctrl-btn:focus-visible {text-shadow: 0 0 2px #007bff;}
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>无障碍阅读示例文本</h1>
+        <p>这是一段用于无障碍阅读模式的测试文字，无需全屏，点击按钮即可朗读。</p>
+        <p>无障碍设计的核心是让所有人都能便捷地获取信息，包括使用屏幕阅读器的用户。</p>
+        <p>你可以替换这里的内容为自己需要阅读的文本。</p>
+    </div>
+
+    <button class="ctrl-btn" id="readBtn" title="点击朗读/暂停文本">🔊</button>
+
+    <script>
+        const content = document.getElementById('content');
+        const readBtn = document.getElementById('readBtn');
+        const speech = new SpeechSynthesisUtterance(content.textContent.trim());
+        speech.lang = 'zh-CN';
+
+        let isReading = false;
+
+        // 仅保留朗读/暂停功能，无任何全屏相关逻辑
+        readBtn.addEventListener('click', () => {
+            if (!isReading) {
+                speech.text = content.textContent.trim();
+                window.speechSynthesis.speak(speech);
+                readBtn.textContent = '❤️';
+                readBtn.title = '暂停朗读';
+            } else {
+                if (window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                    readBtn.textContent = '❤️';
+                    readBtn.title = '暂停朗读';
+                } else {
+                    window.speechSynthesis.pause();
+                    readBtn.textContent = '🔊';
+                    readBtn.title = '继续朗读';
+                }
+            }
+            isReading = !isReading;
+        });
+
+        // 朗读结束自动重置按钮状态
+        speech.onend = () => {
+            isReading = false;
+            readBtn.textContent = '🔊';
+            readBtn.title = '点击朗读文本';
+        };
+    </script>
+</body>
+</html>
