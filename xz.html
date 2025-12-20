@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yi分享下载</title>
+    <style>
+        /* 页面整体样式 */
+        body {
+            margin: 0;
+            padding: 60px 0;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            /* 渐变背景，凸显毛玻璃效果，可改为纯色 */
+            background: linear-gradient(135deg, #e8f4f8, #f5fafe);
+            position: relative;
+            min-height: 100vh; /* 页面铺满视口 */
+        }
+
+        /* 页面遮罩，增强毛玻璃层次感 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        /* 页面主标题 */
+        .main-title {
+            color: #333;
+            padding: 15px 20px;
+            margin: 0 0 40px 20px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            width: fit-content;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 分类容器：每个分类独立包裹，垂直排列分类 */
+        .category-wrapper {
+            margin: 0 20px 30px 20px; /* 分类之间的间距 */
+        }
+
+        /* 分类标题样式：区分每个类别 */
+        .category-title {
+            color: #444;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 1
+9px 0; /* 标题与按钮组的间距 */
+            padding: 8px 12px;
+            width: fit-content;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* 水平排列按钮组样式（每个分类下的按钮横向排列） */
+        .download-btn-group-horizontal {
+            display: flex;
+            gap: 15px; /* 按钮之间的间距 */
+            align-items: center;
+            flex-wrap: wrap; /* 屏幕不足时自动换行 */
+        }
+
+        /* 毛玻璃按钮基础样式 */
+        .download-btn {
+            display: inline-block;
+            padding: 12px 26px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            /* 毛玻璃核心属性 */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        /* 1. 文本分类202512（深蓝色，对应文本类风格） */
+        .btn-text {
+            color: #0d6efd; /* 文本类专属蓝色 */
+        }
+        .btn-text:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 24px rgba(13, 110, 253, 0.2);
+            transform: translateY(-2px);
+            color: #0a58ca; /* 悬浮时加深文本类蓝色 */
+        }
+
+        /* 2. 音频分类：字体颜色（深紫色，对应音频类风格） */
+        .btn-audio {
+            color: #6f42c1; /* 音频类专属紫色 */
+        }
+        .btn-audio:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 24px rgba(111, 66, 193, 0.2);
+            transform: translateY(-2px);
+            color: #5a32a3; /* 悬浮时加深音频类紫色 */
+        }
+
+        /* 3. 其它分类：字体颜色（深橙色，对应其它类风格） */
+        .btn-other {
+            color: #fd7e14; /* 其它类专属橙色 */
+        }
+        .btn-other:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 24px rgba(253, 126, 20, 0.2);
+            transform: translateY(-2px);
+            color: #e06c00; /* 悬浮时加深其它类橙色 */
+        }
+
+        /* 按钮点击按压效果 */
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+   
+
+
+
+
+
+
+    <!-- 第一类：文本分类 -->
+    <div class="category-wrapper">
+        <h2 class="category-title">文本book</h2>
+        <div class="download-btn-group-horizontal">
+            <a href="https://h-9e.github.io/h/assets/json/8.txt" class="download-btn btn-text" target="_blank">
+                Word文档
+            </a>
+            <a href="https://h-9e.github.io/h/assets/css/5.txt" class="download-btn btn-text" target="_blank">
+                PDF文件
+            </a>
+            <a href="https://h-9e.github.io/h/assets/img/1.txt" class="download-btn btn-text" target="_blank">
+                TXT文本
+            </a>
+        </div>
+    </div>
+
+    <!-- 第二类：音频分类 -->
+    <div class="category-wrapper">
+        <h2 class="category-title">音频</h2>
+        <div class="download-btn-group-horizontal">
+            <a href="https://h-9e.github.io/h/assets/he.mp3" class="download-btn btn-audio" target="_blank">
+                为幸福而飞翔MP3
+            </a>
+            <a href="https://audio-download2.com" class="download-btn btn-audio" target="_blank">
+                无WAV原声下载
+            </a>
+            <a href="https://audio-download3.com" class="download-btn btn-audio" target="_blank">
+                无FLAC无损下载
+            </a>
+        </div>
+    </div>
+
+    <!-- 第三类：其它分类 -->
+    <div class="category-wrapper">
+        <h2 class="category-title">其它文件</h2>
+        <div class="download-btn-group-horizontal">
+            <a href=https://h-9e.github.io/h/Y.jpg" class="download-btn btn-other" target="_blank">
+                图画家两个彩色杯
+            </a>
+            <a href="https://other-download2.com" class="download-btn btn-other" target="_blank">
+                图
+            </a>
+            <a href="https://other-download3.com" class="download-btn btn-other" target="_blank">
+                其它3：素材包下载
+            </a>
+        </div>
+    </div>
+</body>
+</html>
